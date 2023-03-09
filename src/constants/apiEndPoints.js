@@ -16,8 +16,14 @@ export const POST_USER_LOGIN = {
   method: 'post',
 };
 
-export const UPDATE_BLOG_DATA = (blogId) => ({
-  url: `blog-posts/${blogId}`,
-  method: 'put',
-});
+export const GET_CONTENT_TYPES = {
+  url: 'contentTypes',
+  method: 'get',
+};
 
+export const GET_COLLECTIONS = (contentTypeId) => {
+  return {
+    url: `contentTypes/data/${contentTypeId}`,
+    method: 'get',
+  };
+};

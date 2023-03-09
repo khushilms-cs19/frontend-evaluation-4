@@ -5,30 +5,17 @@ import { AUTH_URL, BACKEND_URL } from '../../constants/apiEndPoints';
 
 const makeRequest = async (
   apiEndPoint,
-  navigate = () => { },
   dynamicConfig = {}
 ) => {
-  try {
-    const requestDetails = {
-      baseURL: BACKEND_URL,
-      url: apiEndPoint.url,
-      method: apiEndPoint.method,
-      ...dynamicConfig,
-    };
+  const requestDetails = {
+    baseURL: BACKEND_URL,
+    url: apiEndPoint.url,
+    method: apiEndPoint.method,
+    ...dynamicConfig,
+  };
 
-    const { data } = await axios(requestDetails);
-    return data;
-  } catch (e) {
-    console.log(e);
-    if (navigate) {
-      // const errorStatus = e.response?.status;
-      // if (errorStatus) {
-      //   navigate(`${ERROR_ROUTE}/${errorStatus}`);
-      // } else {
-      //   navigate(ERROR_ROUTE);
-      // }
-    }
-  }
+  const { data } = await axios(requestDetails);
+  return data;
 };
 
 const makeRequestAuth = async (
