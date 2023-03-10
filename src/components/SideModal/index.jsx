@@ -68,7 +68,7 @@ function SideModal({contentType, allColumns, setIsModalOpen, currentCollection})
   return (
     <div className='absolute w-screen h-screen flex justify-end items-center bg-black/50'>
       <div className='w-1/3 h-screen p-20 bg-white'>
-        <p className='w-full text-xl text-left mb-10'>{currentCollection?'Edit': 'New'} {contentType.contentTypeName}</p>
+        <p className='w-full text-3xl text-left mb-10 font-bold'>{currentCollection?'Edit': 'New'} {contentType.contentTypeName}</p>
         <div className='flex flex-col gap-5 py-4 max-h-[42rem] overflow-auto'>
           {
             allColumns.length>0 ?
@@ -76,7 +76,7 @@ function SideModal({contentType, allColumns, setIsModalOpen, currentCollection})
                 return (
                   <div className='flex flex-col gap-2' key={index}>
                     <label className='text-gray-400 font-medium text-left'>{item.name}</label>
-                    <input className='border-2 border-gray-300 p-2 rounded-md' data-column-id={item.columnId} ref={(element)=>{inputsRef.current[index] = element;}}
+                    <input className='border border-[#643dff] p-2 rounded-md' data-column-id={item.columnId} ref={(element)=>{inputsRef.current[index] = element;}}
                       defaultValue={currentCollection?getCurrentCollectionColValue(currentCollection,item.columnId):''}
                     ></input>
                   </div>
@@ -86,14 +86,16 @@ function SideModal({contentType, allColumns, setIsModalOpen, currentCollection})
         </div>
         <div>
           <p className='text-red-400'>{error}</p>
-          <button className='bg-blue-400 hover:bg-gray-400 p-2' onClick={()=>setIsModalOpen(false)}>cancel</button>
-          <button className='bg-blue-400 hover:bg-gray-400 p-2' onClick={()=>{
-            if(currentCollection){
-              editCollectionHandler();
-            }else{
-              addNewCollection();
-            }
-          }}>{currentCollection?'Edit':'Add'}</button>
+          <div className='w-full flex gap-4 justify-end'> 
+            <button className='hover:bg-gray-300 rounded-lg p-2 px-6' onClick={()=>setIsModalOpen(false)}>Cancel</button>
+            <button className='bg-gradient-to-r from-[#946afe] to-[#643dff] py-2 px-10 rounded-lg text-white' onClick={()=>{
+              if(currentCollection){
+                editCollectionHandler();
+              }else{
+                addNewCollection();
+              }
+            }}>{currentCollection?'Edit':'Add'}</button>
+          </div>
         </div>
       </div>
     </div>

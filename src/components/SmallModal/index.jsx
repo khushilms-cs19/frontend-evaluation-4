@@ -30,11 +30,11 @@ function SmallModal({createHandler, title, exitModal, contentTypeId, error}) {
         <p className='text-left font-bold text-lg'>{title}</p>
         <div>
           <p className='text-left mb-2'>Enter a value</p>
-          <input className='px-2 py-2 rounded-md text-left bg-gray-200 w-full' placeholder='Value' ref={contentTypeRef}></input>
+          <input className='px-2 py-2 rounded-md text-left w-full border-[#643dff] border' placeholder='Value' ref={contentTypeRef}></input>
         </div>
         <div className='w-full flex justify-end gap-4'>
-          <button className='bg-blue-400 p-4 rounded-sm hover:bg-slate-400' onClick={exitModal}>Cancel</button>
-          <button className='bg-blue-400 p-4 rounded-sm hover:bg-slate-400' onClick={()=>createHandler(contentTypeRef.current.value,contentTypeId||null)}>Create</button>
+          <button className='p-2 rounded-sm text-[#643dff]' onClick={exitModal}>Cancel</button>
+          <button className='bg-gradient-to-r from-[#946afe] to-[#643dff] py-2 px-10 rounded-lg text-white hover:bg-slate-400' onClick={()=>createHandler(contentTypeRef.current.value,contentTypeId||null)}>Create</button>
         </div>
         <p className='text-red-400'>{error}</p>
       </div>

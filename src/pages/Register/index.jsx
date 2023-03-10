@@ -32,8 +32,11 @@ function Register() {
   };
   return (
     <div className='w-100 h-100 flex'>
-      <div className='w-3/5 bg-[#eceeff] h-screen flex justify-center items-center'>
-        <p></p>
+      <div className='w-3/5 bg-[#eceeff] h-screen flex flex-col justify-center items-center'>
+        <div className='w-full'>
+          <p className='text-5xl font-bold text-left px-28'>Design APIs fast,</p>
+          <p className='text-5xl font-bold text-left px-28'>Manage content easily</p>
+        </div>
         <div className='flex justify-center items-center'>
           <img src={registerImage} alt="search" className='w-3/5'/>
         </div>

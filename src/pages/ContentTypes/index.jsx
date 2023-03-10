@@ -36,7 +36,7 @@ function ContentTypes() {
         <div className='p-10'>
           <div className='flex justify-between mb-4'>
             <p className='text-2xl'>{collectionData?.data?.length} Entries Found</p>
-            <button onClick={()=>setIsModalOpen(true)}>Add a new entry</button>
+            <button onClick={()=>setIsModalOpen(true)} className='text-xl text-[#643dff]' >Add a new entry</button>
           </div>
           
             
