@@ -16,7 +16,7 @@ function ProtectedRoute({ redirect, element }) {
       try{
         await axios({
           method: 'POST',
-          url: 'http://localhost:5000/auth/validate',
+          url: `http://${process.env.REACT_APP_AUTH_URL}:${process.env.REACT_APP_AUTH_PORT}/auth/validate`,
           data: {
             token
           }
@@ -24,7 +24,8 @@ function ProtectedRoute({ redirect, element }) {
           setAuthenticated(true);
         });
       }catch(err){
-        navigate(redirect);
+        console.log(err);
+        // navigate(redirect);
       }
     };
     if (localStorage.getItem('token')) {

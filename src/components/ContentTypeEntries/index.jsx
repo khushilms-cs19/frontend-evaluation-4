@@ -76,7 +76,7 @@ function ContentTypeEntries({contentType, setContentTypes, index}) {
       <p className='text-3xl text-left mb-4 text-gray-600'>{columns?.length} Field(s)</p>
       <div>
         <button className='bg-white text-[#5905ce] border-2 border-dotted p-5 w-full border-[#5905ce] rounded-lg text-lg mb-4' onClick={()=>setOpenColumnModal(true)}>Add Another field</button>
-        <div className='flex flex-col gap-4 max-h-[36rem] overflow-auto'>
+        <div className='flex flex-col gap-4 max-h-[32rem] overflow-auto'>
           {
             columns && columns.map((column, index) => {
               return (

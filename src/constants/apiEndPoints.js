@@ -1,5 +1,5 @@
-export const BACKEND_URL = 'http://localhost:4000/';
-export const AUTH_URL = 'http://localhost:5000/auth/';
+export const BACKEND_URL = `http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/`;
+export const AUTH_URL = `http://${process.env.REACT_APP_AUTH_URL}:${process.env.REACT_APP_AUTH_PORT}/auth/`;
 
 export const POST_VALIDATE_JWT = {
   url: 'validate',
