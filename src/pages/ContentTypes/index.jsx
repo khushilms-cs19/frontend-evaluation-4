@@ -52,10 +52,13 @@ function ContentTypes() {
                     })
                   }
                   {
-                    collectionData.allColumns.length>0 &&
-                  <th className='text-gray-400 font-medium p-4'>
+                    collectionData.allColumns.length>0 ?
+                      <th className='text-gray-400 font-medium p-4'>
                     Actions
-                  </th>
+                      </th>:
+                      <th className='text-gray-400 font-medium p-4'>
+                    No columns found
+                      </th>
                   }
                 </tr>
               </thead>

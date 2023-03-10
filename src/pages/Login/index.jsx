@@ -41,6 +41,7 @@ function Login() {
           <Input name='Password' value={password} setValue={setPassword} type='password'/>
           <button className='w-full bg-gradient-to-r my-5 py-2 from-[#946afe] to-[#643dff] rounded-md text-white' onClick={handleRegister}>Login</button>
           <p className='text-white underline text-sm'>Forgot password?</p>
+          <button className='text-white underline text-sm' onClick={()=>navigate('/register')}>Dont have an account?</button>
           <p className='text-red-500'>{error}</p>
         </div>
       </div>

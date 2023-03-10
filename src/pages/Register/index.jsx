@@ -46,6 +46,7 @@ function Register() {
           <Input name='Re-Enter Password' value={repassword} setValue={setRepassword} type='password'/>
           <button className='w-full bg-gradient-to-r my-5 py-2 from-[#946afe] to-[#643dff] rounded-md text-white' onClick={handleRegister}>Register</button>
           <p className='text-white underline text-sm'>Forgot password?</p>
+          <button className='text-white underline text-sm' onClick={()=>navigate('/login')}>Already have an account?</button>
           <p className='text-red-500'>{error}</p>
         </div>
       </div>
