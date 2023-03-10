@@ -34,7 +34,7 @@ function CollectionItem({item, collectionData, setCollectionData, openEditModal}
     <>
       <tr className='bg-white'>
         {
-          collectionData.allColumns.map((column,idx)=>{
+          collectionData.allColumns.slice(0,4).map((column,idx)=>{
             if(checkColumnUsed(column.name, item.data)){
               return (
                 <td className='p-4' key={idx}>{item.data.find((rowItem)=> rowItem.name === column.name).value}</td>

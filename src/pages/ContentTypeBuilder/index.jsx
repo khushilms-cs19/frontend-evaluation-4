@@ -37,24 +37,27 @@ function ContentTypeBuilder() {
             error={contentTypeError}
           />
       }
+      
       <Navigator setContentTypes={setContentTypes}/>
       <div className='w-4/5 flex flex-col bg-[#eaedfe]'>
         <p className='w-full text-left text-2xl font-bold p-6 bg-white'>Content Types</p>
         <div className='flex w-full h-full'>
-          <div className='w-1/4 bg-gray-300 p-10 h-full'>
+          <div className='w-1/4 bg-gray-300 p-5 h-full'>
             <div className='flex justify-between py-4'>
               <p className='text-gray-500'>{contentTypes.length} Types</p>
               <img src={SearchIcon}></img>
             </div>
             <div className='flex flex-col gap-4'>
               <button className='bg-[#eaedfe] border-2 rounded-xl border-dotted p-4 w-full border-[#5905ce] text-[#5905ce] font-bold' onClick={()=>setOpenModal(true)}>+ New Type</button>
-              {
-                contentTypes?.map((contentType,index)=>{
-                  return (
-                    <button key={index} className={`bg-[#5905ce] border-2 rounded-xl border-[#5905ce] w-full p-4  ${selectedContentType===index?'text-white bg-[#5905ce]':'bg-white'}`} onClick={()=>setSelectedContentType(index)}>{contentType.contentTypeName}</button>
-                  );
-                })
-              }
+              <div className='flex flex-col gap-4 max-h-[40rem] overflow-auto'>
+                {
+                  contentTypes?.map((contentType,index)=>{
+                    return (
+                      <button key={index} className={`bg-[#5905ce] border-2 rounded-xl border-[#5905ce] w-full p-4  ${selectedContentType===index?'text-white bg-[#5905ce]':'bg-white'}`} onClick={()=>setSelectedContentType(index)}>{contentType.contentTypeName}</button>
+                    );
+                  })
+                }
+              </div>
             </div>
           </div>
           {

@@ -69,7 +69,7 @@ function SideModal({contentType, allColumns, setIsModalOpen, currentCollection})
     <div className='absolute w-screen h-screen flex justify-end items-center bg-black/50'>
       <div className='w-1/3 h-screen p-20 bg-white'>
         <p className='w-full text-xl text-left mb-10'>{currentCollection?'Edit': 'New'} {contentType.contentTypeName}</p>
-        <div className='flex flex-col gap-5 py-4 max-h-[900px] overflow-auto'>
+        <div className='flex flex-col gap-5 py-4 max-h-[42rem] overflow-auto'>
           {
             allColumns.length>0 ?
               allColumns.map((item,index)=>{

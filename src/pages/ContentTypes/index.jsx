@@ -45,7 +45,7 @@ function ContentTypes() {
               <thead>
                 <tr>
                   {
-                    collectionData.allColumns.map((item,index)=>{
+                    collectionData.allColumns.slice(0,4).map((item,index)=>{
                       return (
                         <th className='text-gray-400 font-medium p-4' key={index}>{item.name}</th>
                       );

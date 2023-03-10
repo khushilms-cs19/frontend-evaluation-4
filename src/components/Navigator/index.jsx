@@ -34,7 +34,7 @@ function Navigator(props) {
           <p className='text-gray-500'>COLLECION TYPES</p>
           <img src={SearchIcon} alt=""/>
         </div>
-        <div>
+        <div className='max-h-[38rem] overflow-auto'>
           {contentTypes?.map((contentType,index)=>{
             return (
               <ContentTypeListItem key={index} contentType={contentType} openTab={()=>navigate(`/content-types/${contentType.contentTypeId}`)}/>
