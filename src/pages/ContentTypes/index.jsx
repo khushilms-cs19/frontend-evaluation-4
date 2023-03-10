@@ -38,9 +38,7 @@ function ContentTypes() {
             <p className='text-2xl'>{collectionData?.data?.length} Entries Found</p>
             <button onClick={()=>setIsModalOpen(true)} className='text-xl text-[#643dff]' >Add a new entry</button>
           </div>
-          
-            
-          <div className="w-full">
+          <div className="w-full max-h-[40rem]">
             <table className='w-full text-left'>
               <thead>
                 <tr>

@@ -67,7 +67,7 @@ function SideModal({contentType, allColumns, setIsModalOpen, currentCollection})
   
   return (
     <div className='absolute w-screen h-screen flex justify-end items-center bg-black/50'>
-      <div className='w-1/3 h-screen p-20 bg-white'>
+      <div className='w-1/3 h-screen p-12 bg-white'>
         <p className='w-full text-3xl text-left mb-10 font-bold'>{currentCollection?'Edit': 'New'} {contentType.contentTypeName}</p>
         <div className='flex flex-col gap-5 py-4 max-h-[42rem] overflow-auto'>
           {

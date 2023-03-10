@@ -27,14 +27,14 @@ function Navigator(props) {
     });
   },[]);
   return (
-    <div className='w-1/5 bg-[#272727] h-screen'>
+    <div className='w-1/5 bg-[#272727] min-h-screen h-full'>
       <p className='p-6 w-full text-left bg-[#5905ce] text-3xl font-extrabold text-white'>CMS+</p>
       <div className=''>
         <div className='flex w-full justify-between p-4' >
           <p className='text-gray-500'>COLLECION TYPES</p>
           <img src={SearchIcon} alt=""/>
         </div>
-        <div className='max-h-[38rem] overflow-auto'>
+        <div className='h-full overflow-auto'>
           {contentTypes?.map((contentType,index)=>{
             return (
               <ContentTypeListItem key={index} contentType={contentType} openTab={()=>navigate(`/content-types/${contentType.contentTypeId}`)}/>
