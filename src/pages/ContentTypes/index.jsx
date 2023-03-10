@@ -14,7 +14,7 @@ function ContentTypes() {
   console.log(id);
   const [collectionData, setCollectionData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [currentCollection, setCurrentCollection] = useState(null);
   useEffect(()=>{
     makeRequest(GET_COLLECTIONS(id),{}).then((data)=>{
       console.log(data);
@@ -28,7 +28,7 @@ function ContentTypes() {
     <div className='flex relative'>
       {
         isModalOpen &&
-      <SideModal contentType={collectionData.contentType} allColumns={collectionData.allColumns} setIsModalOpen={setIsModalOpen}/>
+      <SideModal contentType={collectionData.contentType} allColumns={collectionData.allColumns} setIsModalOpen={setIsModalOpen} currentCollection={currentCollection}/>
       }
       <Navigator/>
       <div className='w-4/5 flex flex-col bg-[#eaedfe]'>
@@ -65,7 +65,10 @@ function ContentTypes() {
                     {
                       collectionData.data.map((item,index)=>{
                         return (
-                          <CollectionItem collectionData={collectionData} item={item} key={index} setCollectionData={setCollectionData}/>
+                          <CollectionItem collectionData={collectionData} item={item} key={index} setCollectionData={setCollectionData} openEditModal={(item)=>{
+                            setCurrentCollection(item);
+                            setIsModalOpen(true);
+                          }}/>
                         );
                       })
                     }

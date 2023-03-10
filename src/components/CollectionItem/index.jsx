@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import makeRequest from '../../utils/makeRequest';
 import { DELETE_COLLECTION } from '../../constants/apiEndPoints';
 
-function CollectionItem({item, collectionData, setCollectionData}) {
+function CollectionItem({item, collectionData, setCollectionData, openEditModal}) {
   const [deleteCollectionError, setDeleteCollectionError] = useState(null);
   // const [editCollectionError, setEditCollectionError] = useState(null);
 
@@ -51,7 +51,7 @@ function CollectionItem({item, collectionData, setCollectionData}) {
             <button onClick={deleteCollectionHandler}>
               <img src={TrashIcon}></img>
             </button>
-            <button>
+            <button onClick={()=>{openEditModal(item);}}>
               <img src={EditIcon}></img>
             </button>
           </div>
@@ -72,6 +72,7 @@ CollectionItem.propTypes={
   item: PropTypes.object,
   collectionData: PropTypes.object,
   setCollectionData: PropTypes.func,
+  openEditModal: PropTypes.func,
 };
 
 export default CollectionItem;

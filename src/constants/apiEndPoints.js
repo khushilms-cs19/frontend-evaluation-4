@@ -74,9 +74,9 @@ export const POST_COLLECTION = (contentTypeId) => {
   };
 };
 
-export const PUT_COLLECTION = (contentTypeId, collectionId) => {
+export const PUT_COLLECTION = (collectionId) => {
   return {
-    url: `contentTypes/data/${contentTypeId}/${collectionId}`,
+    url: `contentTypes/data/${collectionId}`,
     method: 'put',
   };
 };

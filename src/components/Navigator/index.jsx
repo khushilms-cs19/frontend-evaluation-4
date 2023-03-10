@@ -9,7 +9,13 @@ import { useNavigate } from 'react-router-dom';
 function Navigator(props) {
   const [contentTypes, setContentTypes] = useState([]);
   const navigate = useNavigate();
+  const [contentTypeBuilderOpen, setContentTypeBuilderOpen] = useState(false);
   useEffect(()=>{
+    if(window.location.pathname === '/content-types'){
+      setContentTypeBuilderOpen(true);
+    }else{
+      setContentTypeBuilderOpen(false);
+    }
     makeRequest(GET_CONTENT_TYPES,{}).then((data)=>{
       console.log(data);
       setContentTypes(data);
@@ -23,7 +29,7 @@ function Navigator(props) {
   return (
     <div className='w-1/5 bg-[#272727] h-screen'>
       <p className='p-6 w-full text-left bg-[#5905ce] text-3xl font-extrabold text-white'>CMS+</p>
-      <div className='p-5'>
+      <div className=''>
         <div className='flex w-full justify-between p-4' >
           <p className='text-gray-500'>COLLECION TYPES</p>
           <img src={SearchIcon} alt=""/>
@@ -37,7 +43,7 @@ function Navigator(props) {
         </div>
       </div>
       <div>
-        <p className='w-full bg-black p-2 text-white hover:cursor-pointer' onClick={()=>navigate('/content-types')}>CONTENT TYPE BUILDER</p>
+        <p className={`w-full ${contentTypeBuilderOpen?'bg-black':'bg-[#272727]'} p-2 text-white hover:cursor-pointer`} onClick={()=>navigate('/content-types')}>CONTENT TYPE BUILDER</p>
       </div>
     </div>
   );
