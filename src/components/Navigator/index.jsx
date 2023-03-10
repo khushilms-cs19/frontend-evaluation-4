@@ -3,16 +3,19 @@ import SearchIcon from '../../assets/icon-search-dark_2023-03-09/icon-search-dar
 import { GET_CONTENT_TYPES } from '../../constants/apiEndPoints';
 import makeRequest from '../../utils/makeRequest';
 import ContentTypeListItem from '../ContentTypeListItem';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-function Navigator() {
+function Navigator(props) {
   const [contentTypes, setContentTypes] = useState([]);
   const navigate = useNavigate();
   useEffect(()=>{
     makeRequest(GET_CONTENT_TYPES,{}).then((data)=>{
       console.log(data);
       setContentTypes(data);
+      if(props.setContentTypes){
+        props.setContentTypes(data);
+      }
     }).catch((err)=>{
       console.log(err);
     });
@@ -40,8 +43,8 @@ function Navigator() {
   );
 }
 
-// Navigator.propTypes = {
-//   setOpenedTab: PropTypes.func.isRequired,
-// };
+Navigator.propTypes = {
+  setContentTypes: PropTypes.func,
+};
 
 export default Navigator;

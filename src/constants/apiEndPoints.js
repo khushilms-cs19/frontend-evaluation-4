@@ -21,9 +21,34 @@ export const GET_CONTENT_TYPES = {
   method: 'get',
 };
 
+export const POST_CONTENT_TYPE = {
+  url: 'contentTypes',
+  method: 'post',
+};
+
+export const GET_ALL_COLUMNS = (contentTypeId) => {
+  return {
+    url: `/column/${contentTypeId}`,
+    method: 'get',
+  };
+};
+
+export const POST_COLUMN = {
+  url: 'column',
+  method: 'post',
+};
+
+
 export const GET_COLLECTIONS = (contentTypeId) => {
   return {
     url: `contentTypes/data/${contentTypeId}`,
     method: 'get',
+  };
+};
+
+export const POST_COLLECTION = (contentTypeId) => {
+  return {
+    url: `contentTypes/data/${contentTypeId}`,
+    method: 'post',
   };
 };
