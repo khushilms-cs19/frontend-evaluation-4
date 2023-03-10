@@ -26,6 +26,13 @@ export const POST_CONTENT_TYPE = {
   method: 'post',
 };
 
+export const PUT_CONTENT_TYPE = (contentTypeId) => {
+  return {
+    url: `contentTypes/${contentTypeId}`,
+    method: 'put',
+  };
+};
+
 export const GET_ALL_COLUMNS = (contentTypeId) => {
   return {
     url: `/column/${contentTypeId}`,
@@ -33,9 +40,23 @@ export const GET_ALL_COLUMNS = (contentTypeId) => {
   };
 };
 
+export const PUT_COLUMN = (columnId) => {
+  return {
+    url: `column/${columnId}`,
+    method: 'put',
+  };
+};
+
 export const POST_COLUMN = {
   url: 'column',
   method: 'post',
+};
+
+export const DELETE_COLUMN = (columnId) => {
+  return {
+    url: `column/${columnId}`,
+    method: 'delete',
+  };
 };
 
 
@@ -50,5 +71,19 @@ export const POST_COLLECTION = (contentTypeId) => {
   return {
     url: `contentTypes/data/${contentTypeId}`,
     method: 'post',
+  };
+};
+
+export const PUT_COLLECTION = (contentTypeId, collectionId) => {
+  return {
+    url: `contentTypes/data/${contentTypeId}/${collectionId}`,
+    method: 'put',
+  };
+};
+
+export const DELETE_COLLECTION = (collectionId) => {
+  return {
+    url: `contentTypes/data/${collectionId}`,
+    method: 'delete',
   };
 };

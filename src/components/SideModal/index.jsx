@@ -24,6 +24,8 @@ function SideModal({contentType, allColumns, setIsModalOpen}) {
     }).then((data)=>{
       console.log(data);
       setIsModalOpen(false);
+      // setCollectionData((prev)=>({...prev,data: [...prev.data, data] }));
+      // window.location.reload();
     }).catch((err)=>{
       console.log(err);
       setError(err.response.data.message);

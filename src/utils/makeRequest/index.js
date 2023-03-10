@@ -11,6 +11,9 @@ const makeRequest = async (
     baseURL: BACKEND_URL,
     url: apiEndPoint.url,
     method: apiEndPoint.method,
+    headers: {
+      authorization: localStorage.getItem('token') || null,
+    },
     ...dynamicConfig,
   };
 

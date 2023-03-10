@@ -1,36 +1,28 @@
 import React, {useEffect, useState} from 'react';
 import Navigator from '../../components/Navigator';
-import TrashIcon from '../../assets/trash-delete-recycle-bin-bucket-waste_2023-03-09/trash-delete-recycle-bin-bucket-waste.png';
-import EditIcon from '../../assets/user-edit-text-message-note_2023-03-09/user-edit-text-message-note.png';
 // import ContentTypeBuilder from '../ContentTypeBuilder';
 // import { ContentTypeProvider, ContentTypeContext } from '../../contexts/ContentTypeContext';
 import makeRequest from '../../utils/makeRequest';
 import { GET_COLLECTIONS } from '../../constants/apiEndPoints';
 import { useParams } from 'react-router-dom';
 import SideModal from '../../components/SideModal';
+import CollectionItem from '../../components/CollectionItem';
 
-const checkColumnUsed = (column, data)=>{
-  const isUsed = data.some((item)=>{
-    return item.name === column;
-  });
-  console.log(isUsed);
-  return isUsed;
-};
 
 function ContentTypes() {
   const {id} = useParams();
   console.log(id);
-  const [collectionData, setCollectionDatas] = useState(null);
+  const [collectionData, setCollectionData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(()=>{
     makeRequest(GET_COLLECTIONS(id),{}).then((data)=>{
       console.log(data);
-      setCollectionDatas(data);
+      setCollectionData(data);
     }).catch((err)=>{
       console.log(err);
     });
-  },[id]);
+  },[id, isModalOpen]);
 
   return ( collectionData ?
     <div className='flex relative'>
@@ -40,10 +32,10 @@ function ContentTypes() {
       }
       <Navigator/>
       <div className='w-4/5 flex flex-col bg-[#eaedfe]'>
-        <p className='w-full text-left text-2xl font-bold p-6 bg-white '>Content Types</p>
+        <p className='w-full text-left text-2xl font-bold p-6 bg-white '>{collectionData.contentType.contentTypeName}</p>
         <div className='p-10'>
           <div className='flex justify-between mb-4'>
-            <p className='text-2xl'>13 Entries Found</p>
+            <p className='text-2xl'>{collectionData?.data?.length} Entries Found</p>
             <button onClick={()=>setIsModalOpen(true)}>Add a new entry</button>
           </div>
           
@@ -59,9 +51,12 @@ function ContentTypes() {
                       );
                     })
                   }
+                  {
+                    collectionData.allColumns.length>0 &&
                   <th className='text-gray-400 font-medium p-4'>
                     Actions
                   </th>
+                  }
                 </tr>
               </thead>
               { 
@@ -70,27 +65,7 @@ function ContentTypes() {
                     {
                       collectionData.data.map((item,index)=>{
                         return (
-                          <tr className='bg-white' key={index}>
-                            {
-                              collectionData.allColumns.map((column,idx)=>{
-                                if(checkColumnUsed(column.name, item.data)){
-                                  return (
-                                    <td className='p-4' key={idx}>{item.data.find((rowItem)=> rowItem.name === column.name).value}</td>
-                                  );
-                                }else{
-                                  return (
-                                    <td className='p-4' key={idx}>-</td>
-                                  );
-                                }
-                              })
-                            }
-                            <td className='p-4'>
-                              <div className='flex gap-4 items-center'>
-                                <img src={TrashIcon}></img>
-                                <img src={EditIcon}></img>
-                              </div>
-                            </td>
-                          </tr>
+                          <CollectionItem collectionData={collectionData} item={item} key={index} setCollectionData={setCollectionData}/>
                         );
                       })
                     }
@@ -98,7 +73,7 @@ function ContentTypes() {
               }
             </table>
             {
-              collectionData.allColumns.length === 0 &&
+              (collectionData.allColumns.length === 0 || collectionData.data.length===0) &&
             <p className='text-xs text-center text-gray-400 bg-white p-2 rounded-md'>No entries for this content type</p>
             }
           </div>

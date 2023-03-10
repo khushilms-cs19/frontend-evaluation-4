@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // import { POST_CONTENT_TYPE } from '../../constants/apiEndPoints';
 
 function SmallModal({createHandler, title, exitModal, contentTypeId, error}) {
+  console.log(contentTypeId);
   const contentTypeRef = useRef(null);
   // const handleCreateContentType = async () => {
   //   console.log(contentTypeRef.current.value);
